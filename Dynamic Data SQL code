@@ -1,0 +1,36 @@
+### CHANGE FIXED DATA TO DYNAMIC DATA IN SQL CODE ###
+
+let
+
+
+
+    x = Excel.CurrentWorkbook(){[Name="TABLE NAME IN EXCEL"]}[Content],
+    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"TABLE NAME", type date}}),
+    FinalInputData = #"Zmieniono typ55"{0}[TABLE NAME},
+
+### EXAMPLE ###
+### DATE FROM ###
+
+    x = Excel.CurrentWorkbook(){[Name="Table3"]}[Content],
+    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"Date from ", type date}}),
+    FinalInputData = #"Zmieniono typ55"{0}[Date from},
+
+###         ###
+
+    x2 = Excel.CurrentWorkbook(){[Name="TABLE NAME IN EXCEL"]}[Content],
+    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"TABLE NAME", type date}}),
+    FinalInputData = #"Zmieniono typ55"{0}[TABLE NAME},
+
+### EXAMPLE ###
+### DATE TO ###
+
+    x2 = Excel.CurrentWorkbook(){[Name="Table4"]}[Content],
+    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"Date to", type date}}),
+    FinalInputData = #"Zmieniono typ55"{0}[Date to},
+
+###         ###
+
+fixed date change in SQL code to:
+
+    {d '"&Date.ToText(FinalInputData, "yyyy-MM-dd")&"')   
+    {d '"&Date.ToText(FinalInputData1, "yyyy-MM-dd")&"')   
