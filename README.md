@@ -1,4 +1,4 @@
-# dynamic-date-in-DAX-projects
+# dynamic date in DAX projects
 
 
 
