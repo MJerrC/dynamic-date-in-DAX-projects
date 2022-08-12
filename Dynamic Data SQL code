@@ -12,8 +12,8 @@ let
 ### DATE FROM ###
 
     x = Excel.CurrentWorkbook(){[Name="Table3"]}[Content],
-    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"Date from ", type date}}),
-    FinalInputData = #"Zmieniono typ55"{0}[Date from},
+    #"Zmieniono typ56" = Table.transformColumnTypes(x,{{"Date from ", type date}}),
+    FinalInputData1 = #"Zmieniono typ55"{0}[Date from},
 
 ###         ###
 
