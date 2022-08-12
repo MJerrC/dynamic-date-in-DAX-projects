@@ -8,34 +8,34 @@ let
 
     x = Excel.CurrentWorkbook(){[Name="TABLE NAME IN EXCEL"]}[Content],    /* "wstawić nazwę tabeli z excela - nazwę można sprawdzić lub zmienić na wstążce w zakładce projekt tabeli" */
     #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"TABLE NAME", type date}}),   /* podać nazwę nagłówka tabeli np: data from czy data od" */
-    FinalInputData = #"Zmieniono typ55"{0}[TABLE NAME},     /* ta sama nazwa co liniję wyżej */
+    FinalInputData1 = #"Zmieniono typ55"{0}[TABLE NAME},     /* ta sama nazwa co liniję wyżej */
 
 ### EXAMPLE ###
 ### DATE FROM ###
 
     x2 = Excel.CurrentWorkbook(){[Name="Table3"]}[Content],   
     #"Zmieniono typ56" = Table.transformColumnTypes(x,{{"Date from ", type date}}),
-    FinalInputData1 = #"Zmieniono typ55"{0}[Date from}, 
+    FinalInputData1 = #"Zmieniono typ56"{0}[Date from}, 
 
 ###         ###
 
     x2 = Excel.CurrentWorkbook(){[Name="TABLE NAME IN EXCEL"]}[Content],    /* "wstawić nazwę tabeli z excela - nazwę można sprawdzić lub zmienić na wstążce w zakładce projekt tabeli" */
     #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"TABLE NAME", type date}}), /* podać nazwę nagłówka tabeli np: data to czy data do" */
-    FinalInputData = #"Zmieniono typ55"{0}[TABLE NAME},  /* ta sama nazwa co liniję wyżej */
+    FinalInputData2 = #"Zmieniono typ55"{0}[TABLE NAME},  /* ta sama nazwa co liniję wyżej */
 
 ### EXAMPLE ###
 ### DATE TO ###
 
     x2 = Excel.CurrentWorkbook(){[Name="Table4"]}[Content],
-    #"Zmieniono typ55" = Table.transformColumnTypes(x,{{"Date to", type date}}),
-    FinalInputData = #"Zmieniono typ55"{0}[Date to},
+    #"Zmieniono typ56" = Table.transformColumnTypes(x,{{"Date to", type date}}),
+    FinalInputData2 = #"Zmieniono typ56"{0}[Date to},
 
 ###         ###
 
 fixed date change in SQL code to:
 
-    {d '"&Date.ToText(FinalInputData, "yyyy-MM-dd")&"')   /* podmienić w zapytaniu SQL jest to pierwsza data oznaczająca początek okresu */
-    {d '"&Date.ToText(FinalInputData1, "yyyy-MM-dd")&"')  /* podmienić w zapytaniu SQL jest to druga data oznaczająca koniec okresu */
+    {d '"&Date.ToText(FinalInputData1, "yyyy-MM-dd")&"')   /* podmienić w zapytaniu SQL jest to pierwsza data oznaczająca początek okresu */
+    {d '"&Date.ToText(FinalInputData2, "yyyy-MM-dd")&"')  /* podmienić w zapytaniu SQL jest to druga data oznaczająca koniec okresu */
     
 ### EXAMPLE ###
 
